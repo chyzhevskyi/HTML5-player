@@ -15,9 +15,17 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
+                    <div class="col-4 offset-3">
+                        <input class="sourceLink input-group form-control" placeholder="Put link here">
+                    </div>
+                    <div class="col-2">
+                        <button class="start btn btn-dark">Play</button>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-10 offset-1">
                         <div class="player">
-                            <video src="video/default.mp4" class="video"></video>
+                            <video class="video"></video>
                             <div class="hud d-flex justify-content-between">
                                 <div>
                                     <button class="play"></button>
@@ -47,6 +55,7 @@
         </div>
     </main>
     <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="js/main.js"></script>
 </body>
 

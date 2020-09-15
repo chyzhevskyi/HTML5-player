@@ -1,3 +1,4 @@
+let startbtn = document.querySelector(".start");
 let video = document.querySelector(".video");
 let player = document.querySelector(".player");
 let play = document.querySelector(".play");
@@ -40,7 +41,7 @@ function FullscreenExit() {
     if (!document.fullscreenElement) {
         progress.setAttribute("style", "width: 300px;");
     }
-} 
+}
 function Mute() {
     video.volume = 0;
     video_volume.value = 0;
@@ -75,22 +76,42 @@ function Rewind() {
     video.currentTime = video.duration * dx / x;
     video.play();
 }
-function Time (dt,ct) {
+function Time(dt, ct) {
     let hours = Math.floor(dt / 60 / 60);
     let minutes = Math.floor(dt / 60) - (hours * 60);
     let seconds = Math.floor(dt % 60);
-    if (hours < 10) duration_time.innerHTML=`0${hours}:`; else duration_time.innerHTML=`${hours}:`;
-    if (minutes < 10) duration_time.innerHTML+=`0${minutes}:`; else duration_time.innerHTML+=`${minutes}:`;
-    if (seconds < 10) duration_time.innerHTML+=`0${seconds}`; else duration_time.innerHTML+=`${seconds}`;
+    if (hours < 10) duration_time.innerHTML = `0${hours}:`; else duration_time.innerHTML = `${hours}:`;
+    if (minutes < 10) duration_time.innerHTML += `0${minutes}:`; else duration_time.innerHTML += `${minutes}:`;
+    if (seconds < 10) duration_time.innerHTML += `0${seconds}`; else duration_time.innerHTML += `${seconds}`;
     let current_hours = Math.floor(ct / 60 / 60);
     let current_minutes = Math.floor(ct / 60) - (hours * 60);
     let current_seconds = Math.floor(ct % 60);
-    if (current_hours < 10) current_time.innerHTML=`0${current_hours}:`; else current_time.innerHTML=`${current_hours}:`;
-    if (current_minutes < 10) current_time.innerHTML+=`0${current_minutes}:`; else current_time.innerHTML+=`${current_minutes}:`;
-    if (current_seconds < 10) current_time.innerHTML+=`0${current_seconds}`; else current_time.innerHTML+=`${current_seconds}`;
+    if (current_hours < 10) current_time.innerHTML = `0${current_hours}:`; else current_time.innerHTML = `${current_hours}:`;
+    if (current_minutes < 10) current_time.innerHTML += `0${current_minutes}:`; else current_time.innerHTML += `${current_minutes}:`;
+    if (current_seconds < 10) current_time.innerHTML += `0${current_seconds}`; else current_time.innerHTML += `${current_seconds}`;
 }
-play.addEventListener("click", Play);    
+function StartVideo() {
+    let videoSrc = document.querySelector(".sourceLink").value;
+    if (Hls.isSupported()) {
+        let hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', function () {
+            video.play();
+        });
+    }
+}
+
+play.addEventListener("click", Play);
 video.addEventListener("click", Play);
+startbtn.addEventListener("click", StartVideo);
+startbtn.addEventListener("click", Play);
 video_stop.addEventListener("click", VideoStop);
 fullscreen.addEventListener("click", FullScreen);
 document.addEventListener('fullscreenchange', FullscreenExit);
