@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.video {
+    height: 480px;
+    width: 100%;
+    background-color: #000;
+    margin: 50px 0px 0px 0px;
+}
+.play, .stop, .fullscreen, .mute {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin: 5px 0px 0px 10px;
+    border: none;
+    transition: 0.7s;
+}
+.play {
+    background: url("../img/play.png");
+}
+.stop {
+    background: url("../img/stop.png");
+}
+.fullscreen {
+    background: url("../img/full-screen.png");
+    margin: 5px 10px 0px 10px; 
+}
+.mute {
+    background: url("../img/mute.png");
+}
+.speed {
+    height: 32px;
+    border: 2px solid #000;
+    font-size: 18px;
+    position: relative;
+    bottom: 12px;
+}
+.speed-icon {
+    display: inline-block;
+    background: url("../img/speed.png");
+    height: 40px;
+    width: 48px;
+    margin: 5px 0px 0px 10px;
+    border: none;
+}
+.volume {
+    position: relative;
+    bottom: 12px;
+}
+::-webkit-progress-bar {
+    background: #000;
+}
+::-webkit-progress-value {
+    background: #0075ff;
+}
+::-moz-progress-bar {
+    background: #0075ff;
+}
+.progress {
+    width: 270px;
+    margin: 16px 0px 0px 10px;
+}
+.current-time {
+    margin: 10px 0px 0px 0px;
+}
+.duration-time {
+    margin: 10px 0px 0px 10px;
+}
+.play:active, .play:focus, .stop:active, .stop:focus, .fullscreen:active, .fullscreen:focus, .mute:active, .mute:focus {
+    outline: none;
+    border: none;
+}
+.play:hover, .stop:hover, .fullscreen:hover, .mute:hover {
+    transform: scale(1.2);
+}
+.hud {
+    height: 53px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+}

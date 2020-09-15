@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Player</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10 offset-1">
+                        <div class="player">
+                            <video src="video/default.mp4" class="video"></video>
+                            <div class="hud d-flex justify-content-between">
+                                <div>
+                                    <button class="play"></button>
+                                    <button class="stop"></button>
+                                    <button class="mute"></button>
+                                    <input type="range" min="0" max="100" class="volume ">
+                                </div>
+                                <div class="d-flex d-inline">
+                                    <span class="current-time">00:00:00</span>
+                                    <progress max="100" class="progress"></progress>
+                                    <span class="duration-time">00:00:00</span>
+                                </div>
+                                <div>
+                                    <span class="speed-icon"></span>
+                                    <select class="speed">
+                                        <option value="0.5">x0.5</option>
+                                        <option value="1" selected>x1</option>
+                                        <option value="2">x2</option>
+                                    </select>
+                                    <button class="fullscreen"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
